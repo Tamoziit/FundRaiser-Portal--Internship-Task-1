@@ -33,7 +33,7 @@ const Mission = () => {
 
             <div className="w-full flex flex-wrap gap-6 lg:gap-10 items-center justify-center mt-6">
                 {missions.map((mission, _idx) => (
-                    <div className="bg-black/10 backdrop-blur-lg shadow-md border-2 border-gray-200 rounded-lg flex flex-col items-center justify-center p-6 w-[280px] sm:w-[320px] lg:w-[360px] transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div key={_idx} className="bg-black/10 backdrop-blur-lg shadow-md border-2 border-gray-200 rounded-lg flex flex-col items-center justify-center p-6 w-[280px] sm:w-[320px] lg:w-[360px] transition-transform transform hover:scale-105 hover:shadow-lg">
                         <h1 className="text-lg font-semibold mb-1 text-gray-200">{mission.head}</h1>
                         <div className="h-[3px] bg-emerald-300 w-6 rounded-lg" />
                         <p className="text-center text-sm text-gray-300 mt-2">

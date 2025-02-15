@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaVenusMars } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useSignup from "../../hooks/useSignup";
+import Spinner from "../../components/Spinner";
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +18,7 @@ const Signup = () => {
     pincode: ""
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { loading, signup } = useSignup();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -23,7 +26,7 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(inputs);
+    await signup(inputs);
   }
 
   return (
@@ -164,8 +167,8 @@ const Signup = () => {
             </div>
 
             <div className="flex items-start justify-center p-2 w-full">
-              <button className="btn-submit w-full lg:w-[90%]" type="submit">
-                Signup
+              <button className="btn-submit w-full lg:w-[90%] disabled:bg-green-300" type="submit" disabled={loading}>
+                {loading ? <Spinner size="small" color="primary" /> : "Signup"}
               </button>
             </div>
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useLogin from "../../hooks/useLogin";
+import Spinner from "../../components/Spinner";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -8,10 +10,16 @@ const Login = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { loading, login } = useLogin();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await login(inputs);
+  }
 
   return (
     <div className="flex flex-col gap-3 items-center justify-center min-h-screen w-full rounded-xl">
@@ -24,7 +32,7 @@ const Login = () => {
             <img src="/Logo.png" alt="signup" className="object-cover  h-[300px]" />
           </div>
 
-          <form className="flex flex-col gap-7 items-start justify-center glassmorphic p-4 w-[320px] md:w-[380px] lg:w-[450px]">
+          <form className="flex flex-col gap-7 items-start justify-center glassmorphic p-4 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
               <label className="text-lg font-medium text-gray-50">Email</label>
               <input
@@ -58,9 +66,13 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex items-start justify-center p-2 w-full">
-              <button className="btn-submit w-full lg:w-[90%]" type="submit">
-                Login
+            <div className="flex items-center justify-center p-2 w-full">
+              <button className="btn-submit w-full lg:w-[90%] disabled:bg-green-300" type="submit" disabled={loading}>
+                {loading ?
+                  <Spinner size="small" color="primary" />
+                  :
+                  "Login"
+                }
               </button>
             </div>
 

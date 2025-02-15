@@ -91,7 +91,8 @@ export const signup = async (req: Request, res: Response) => {
                     donations: newUser.donations,
                     raisedAmount: newUser.raisedAmount,
                     level: newUser.level,
-                    code: newUser.code
+                    code: newUser.code,
+                    token
                 });
         }
     } catch (error) {
@@ -146,7 +147,8 @@ export const login = async(req: Request, res: Response) => {
                 donations: user.donations,
                 raisedAmount: user.raisedAmount,
                 level: user.level,
-                code: user.code
+                code: user.code,
+                token
             });
     } catch (error) {
         console.log("Error in Login controller", error);
