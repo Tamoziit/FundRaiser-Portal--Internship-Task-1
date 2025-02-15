@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaVenusMars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -9,6 +9,7 @@ const Signup = () => {
     password: "",
     mobileNo: "",
     dob: "",
+    gender: "",
     city: "",
     state: "",
     country: "",
@@ -20,8 +21,13 @@ const Signup = () => {
     setShowPassword((prevState) => !prevState);
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(inputs);
+  }
+
   return (
-    <div className = "flex flex-col gap-3 items-center justify-center min-h-screen w-full pb-6 pt-4 lg:pt-0" >
+    <div className="flex flex-col gap-3 items-center justify-center min-h-screen w-full pb-6 pt-4 lg:pt-0" >
       <h1 className="text-[30px] md:text-[35px] lg:text-[40px] gradient-text-1">Signup</h1>
       <div className="h-[3.3px] -mt-1 bg-green-500 w-10 rounded-lg" />
 
@@ -31,7 +37,7 @@ const Signup = () => {
             <img src="/Logo.png" alt="signup" className="object-cover h-[300px] -translate-y-5" />
           </div>
 
-          <form className="flex flex-col gap-4 items-start justify-center glassmorphic p-4 w-[320px] md:w-[380px] lg:w-[450px]">
+          <form className="flex flex-col gap-4 items-start justify-center glassmorphic p-4 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
               <label className="text-lg font-medium text-gray-50">Name</label>
               <input
@@ -98,6 +104,25 @@ const Signup = () => {
                 value={inputs.dob}
                 onChange={(e) => setInputs({ ...inputs, dob: e.target.value })}
               />
+            </div>
+
+            <div className="flex flex-col gap-1 w-full">
+              <label className="text-lg font-medium text-gray-50">Gender</label>
+              <div className="flex gap-4 w-full items-center justify-between">
+                {["Male", "Female", "Others"].map((gender) => (
+                  <label key={gender} className="flex items-center gap-2 text-gray-200">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value={gender[0]}
+                      checked={inputs.gender === gender[0]}
+                      onChange={(e) => setInputs({ ...inputs, gender: e.target.value })}
+                      className="w-5 h-[15.5px]"
+                    />
+                    {gender}
+                  </label>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-col gap-1 w-full">

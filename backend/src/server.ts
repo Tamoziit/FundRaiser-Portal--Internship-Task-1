@@ -6,6 +6,10 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 
+import connectToMongoDB from "./db/connectToMongoDb";
+import authRoutes from "./routes/auth.routes";
+import { client } from "./redis/client";
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -21,6 +25,14 @@ app.get("/api/v1", (req: Request, res: Response) => {
     res.send("<h1>Server up & Running</h1>");
 });
 
+app.use("/api/v1/auth", authRoutes);
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    connectToMongoDB();
+    if (client) {
+        console.log("Connected to Redis");
+    } else {
+        console.log("Error in connecting to Redis");
+    }
 });
