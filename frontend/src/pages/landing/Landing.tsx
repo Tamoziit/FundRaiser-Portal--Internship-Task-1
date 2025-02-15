@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import LandingNav from "../../components/navbars/LandingNav";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import About from "../../components/landing/About";
+import Mission from "../../components/landing/Mission";
 
 const Landing = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -41,10 +43,13 @@ const Landing = () => {
         />
 
         <div className="flex gap-5 mt-8">
-          <Link to="/login" className="btn-primary w-[130px] flex items-center justify-center py-2">Login</Link>
-          <Link to="/signup" className="btn-secondary w-[130px] flex items-center justify-center py-2">Signup</Link>
+          <Link to="/login" className="btn-primary w-[130px] lg:w-[180px] flex items-center justify-center py-2">Login</Link>
+          <Link to="/signup" className="btn-secondary w-[130px] lg:w-[180px] flex items-center justify-center py-2">Signup</Link>
         </div>
       </div>
+
+      <About />
+      <Mission />
     </div>
   )
 }

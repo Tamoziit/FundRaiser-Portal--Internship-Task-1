@@ -13,9 +13,9 @@ const LandingNavbar = () => {
 			link: "#about",
 		},
 		{
-			name: "Companies",
+			name: "Mission",
 			icon: <VscWorkspaceTrusted className="text-gray-700 font-bold" />,
-			link: "#companies",
+			link: "#mission",
 		},
 		{
 			name: "Contact",

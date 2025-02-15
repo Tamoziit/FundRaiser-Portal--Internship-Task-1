@@ -8,7 +8,7 @@ import Home from "./pages/home/Home";
 function App() {
   return (
     <>
-      <div className="min-h-screen w-full bg-gradient-to-b from-gray-100 to-slate-500 via-gray-300">
+      <div className="min-h-screen w-full bg-gradient-to-b from-gray-50 to-slate-600 via-gray-400">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
