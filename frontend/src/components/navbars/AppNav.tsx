@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { FaListAlt, FaPhoneAlt } from "react-icons/fa";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { MdOutlineLogout } from "react-icons/md";
 import useLogout from "../../hooks/useLogout";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+import { FaTrophy } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const AppNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,19 +13,24 @@ const AppNavbar = () => {
 
     const items = [
         {
-            name: "About",
-            icon: <FaListAlt className="text-gray-700 font-bold" />,
-            link: "#about",
+            name: "Dashboard",
+            icon: <IoStatsChartSharp className="text-gray-700 font-bold" />,
+            link: "/dashboard",
+        },
+        {
+            name: "Transactions",
+            icon: <RiMoneyRupeeCircleFill className="text-gray-700 font-bold" />,
+            link: "/transactions",
+        },
+        {
+            name: "Leaderboard",
+            icon: <FaTrophy className="text-gray-700 font-bold" />,
+            link: "/leaderboard",
         },
         {
             name: "Mission",
             icon: <VscWorkspaceTrusted className="text-gray-700 font-bold" />,
-            link: "#mission",
-        },
-        {
-            name: "Contact",
-            icon: <FaPhoneAlt className="text-gray-700 font-bold" />,
-            link: "#contact",
+            link: "/mission",
         }
     ];
 
@@ -67,19 +75,20 @@ const AppNavbar = () => {
                 {items.map((item, _idx) => (
                     <div key={_idx} className="flex items-center gap-2">
                         <span>{item.icon}</span>
-                        <a
+                        <Link
                             key={_idx}
-                            href={item.link}
+                            to={item.link}
                             className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
                         >
                             {item.name}
-                        </a>
+                        </Link>
                     </div>
                 ))}
 
                 <button
                     disabled={loading}
                     onClick={logout}
+                    className="cursor-pointer"
                 >
                     <MdOutlineLogout className="size-5 text-gray-700" />
                 </button>
@@ -91,20 +100,20 @@ const AppNavbar = () => {
                         {items.map((item, _idx) => (
                             <li key={_idx} className="flex items-center gap-2">
                                 <span>{item.icon}</span>
-                                <a
-                                    href={item.link}
+                                <Link
+                                    to={item.link}
                                     className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {item.name}
-                                </a>
+                                </Link>
                             </li>
                         ))}
 
                         <div className="flex items-center gap-2">
                             <MdOutlineLogout className="size-5 text-gray-700" />
                             <button
-                                className="relative gap-2 text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
+                                className="relative gap-2 text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full cursor-pointer"
                                 disabled={loading}
                                 onClick={logout}
                             >

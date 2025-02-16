@@ -10,6 +10,8 @@ import { IoIosCodeWorking } from "react-icons/io";
 import Spinner from "../../components/Spinner";
 import handleImageUpload from "../../utils/uploadBlobToCloudinary";
 import useUpdateProfile from "../../hooks/useUpdateProfile";
+import CTA from "../../components/CTA";
+import toast from "react-hot-toast";
 
 const Home = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -18,6 +20,7 @@ const Home = () => {
   const { loading, profile } = useGetProfile();
   const [uploading, setUploading] = useState<boolean>(false);
   const { loading: updating, profilePic } = useUpdateProfile();
+  const [hovered, setHovered] = useState(false);
 
   const getProfile = async () => {
     const data = await profile();
@@ -47,9 +50,19 @@ const Home = () => {
       const file = e.target.files[0];
       const uploadedUrl = await handleImageUpload(file);
       await profilePic(uploadedUrl);
-      console.log(uploadedUrl);
     }
     setUploading(false);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(authUser!.code)
+      .then(() => {
+        toast.success("Reference Code copied to ClipBoard!");
+      })
+      .catch(err => {
+        toast.error("Failed to copy Reference Code to ClipBoard")
+        console.error("Failed to copy: ", err);
+      });
   };
 
   return (
@@ -79,7 +92,7 @@ const Home = () => {
             <span className="lg:text-lg font-medium italic text-gray-600">Your Profile Details</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center w-full gap-4 lg:w-[60%] py-4 px-8 glassmorphic">
+          <div className="flex flex-col items-center justify-center w-full gap-4 lg:w-[60%] py-4 px-8 glassmorphic-3">
             {loading ? <Spinner size="large" color="primary" /> : (
               <>
                 <div className="flex flex-col md:flex-row items-center justify-between w-full">
@@ -120,7 +133,7 @@ const Home = () => {
 
                 <div className="w-full h-[0.5px] bg-gray-400" />
 
-                <div className="flex flex-col md:flex-row gap-3 items-center justify-between md:justify-evenly w-full">
+                <div className="flex flex-col md:flex-row gap-3 items-center justify-between md:justify-evenly w-full mb-2">
                   <div className="flex flex-col items-center justify-center">
                     <FaAward className="size-10 text-gray-300" />
                     <span className="text-lg font-semibold text-gray-400">{userProfile?.level}</span>
@@ -131,11 +144,25 @@ const Home = () => {
                     <span className="text-lg font-semibold text-gray-400">{userProfile?.raisedAmount}</span>
                   </div>
 
-                  <div className="flex flex-col items-center justify-center -mt-2 md:-mt-0">
+                  <div className="flex flex-col items-center justify-center -mt-2 md:-mt-0"
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                  >
+                    {/* Tooltip */}
+                    {hovered && (
+                      <div className="absolute bg-gray-800 text-white text-xs px-3 py-1 rounded-md shadow-lg animate-fade-in">
+                        Click to copy Reference Code
+                      </div>
+                    )}
+
                     <IoIosCodeWorking className="size-10 text-gray-300 -mt-1 md:-mt-2" />
-                    <span className="text-lg font-semibold text-gray-400">{authUser?.code}</span>
+                    <span className="text-lg font-semibold text-gray-400 cursor-pointer" onClick={copyToClipboard}>{authUser?.code}</span>
                   </div>
                 </div>
+
+                <div className="w-full h-[0.5px] bg-gray-400" />
+
+                <CTA />
               </>
             )}
           </div>

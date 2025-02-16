@@ -6,9 +6,10 @@ import Landing from "./pages/landing/Landing";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Home from "./pages/home/Home";
+import DonationForm from "./pages/donate/DonationForm";
 
 function App() {
-  const {authUser} = useAuthContext();
+  const { authUser } = useAuthContext();
   console.log(authUser);
 
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={authUser ? <Navigate to="/home" /> : <Login />} />
           <Route path="/signup" element={authUser ? <Navigate to="/home" /> : <Signup />} />
           <Route path="/home" element={authUser ? <Home /> : <Navigate to="/" />} />
+          <Route path="/donate/:id" element={<DonationForm />} />
         </Routes>
 
         <Toaster />
