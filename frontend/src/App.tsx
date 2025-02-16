@@ -10,9 +10,9 @@ import DonationForm from "./pages/donate/DonationForm";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Transactions from "./pages/transactions/Transactions";
 import Leaderboard from "./pages/leaderboard/Leaderboard";
-import Mission from "./components/landing/Mission";
 import CompletePayment from "./pages/payments/CompletePayment";
 import CancelPayement from "./pages/payments/CancelPayement";
+import MissionPage from "./pages/mission/MissionPage";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -30,7 +30,7 @@ function App() {
           <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
           <Route path="/transactions" element={authUser ? <Transactions /> : <Navigate to="/" />} />
           <Route path="/leaderboard" element={authUser ? <Leaderboard /> : <Navigate to="/" />} />
-          <Route path="/mission" element={authUser ? <Mission /> : <Navigate to="/" />} />
+          <Route path="/mission" element={authUser ? <MissionPage /> : <Navigate to="/" />} />
           <Route path="/donate/complete-payment" element={authUser ? <CompletePayment /> : <Navigate to="/" />} />
           <Route path="/donate/cancel-payment" element={authUser ? <CancelPayement /> : <Navigate to="/" />} />
 

@@ -10,6 +10,7 @@ import connectToMongoDB from "./db/connectToMongoDb";
 import { client } from "./redis/client";
 import authRoutes from "./routes/auth.routes";
 import profileRoutes from "./routes/profile.routes";
+import publicRoutes from "./routes/public.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +29,7 @@ app.get("/api/v1", (req: Request, res: Response) => {
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/profile", profileRoutes);
+app.use("/api/v1/public", publicRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

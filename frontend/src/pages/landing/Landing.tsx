@@ -37,7 +37,7 @@ const Landing = () => {
 
         <img
           ref={imageRef}
-          src="/Landing.png"
+          src="/homeLogo.png"
           alt="Landing"
           className="w-[500px] opacity-0"
         />

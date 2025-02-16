@@ -48,3 +48,9 @@ export interface DashboardData {
     target: number;
     nextLevel: string;
 }
+
+export interface LeaderBoardList {
+    currentPage: number;
+    totalPages: number;
+    users: AuthUser[];
+}
