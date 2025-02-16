@@ -41,3 +41,10 @@ export interface AuthContextType {
 export interface AuthContextProviderProps {
     children: ReactNode;
 }
+
+export interface DashboardData {
+    level: string;
+    raisedAmount: number;
+    target: number;
+    nextLevel: string;
+}

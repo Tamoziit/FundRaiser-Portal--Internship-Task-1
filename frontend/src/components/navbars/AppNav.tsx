@@ -6,12 +6,18 @@ import { IoStatsChartSharp } from "react-icons/io5";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { FaTrophy } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 const AppNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { loading, logout } = useLogout();
 
     const items = [
+        {
+            name: "Home",
+            icon: <FaHome className="text-gray-700 font-bold" />,
+            link: "/home",
+        },
         {
             name: "Dashboard",
             icon: <IoStatsChartSharp className="text-gray-700 font-bold" />,

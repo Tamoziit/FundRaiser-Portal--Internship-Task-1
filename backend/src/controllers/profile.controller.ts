@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user.model";
+import { levels } from "../data/constants";
 
 interface ProfilePicProps {
     profilePic: string;
@@ -50,6 +51,34 @@ export const updateProfilePic = async (req: Request, res: Response) => {
         })
     } catch (error) {
         console.log("Error in updateProfilePic controller", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const getDashboardData = async (req: Request, res: Response) => {
+    try {
+        const user = await User.findById(req.user?._id);
+        if (!user) {
+            res.status(400).json({ error: "Cannot find user" });
+            return;
+        }
+
+        let target, nextLevel;
+        levels.forEach((level, _idx) => {
+            if (user.raisedAmount >= level.start && user.raisedAmount <= level.target) {
+                target = level.target;
+                nextLevel = levels[_idx + 1].level;
+            }
+        });
+
+        res.status(200).json({
+            level: user.level,
+            raisedAmount: user.raisedAmount,
+            target,
+            nextLevel
+        })
+    } catch (error) {
+        console.log("Error in getDashboardData controller", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
