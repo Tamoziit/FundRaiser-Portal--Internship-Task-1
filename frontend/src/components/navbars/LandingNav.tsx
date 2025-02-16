@@ -25,7 +25,7 @@ const LandingNavbar = () => {
 		{
 			name: "Login",
 			icon: <MdOutlineLogin className="text-gray-700 font-bold" />,
-			link: "/applicant/login",
+			link: "/login",
 		},
 	];
 

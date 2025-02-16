@@ -13,7 +13,7 @@ export interface User {
     gender: "M" | "F" | "O";
     dob: string;
     address: string;
-    profilePic: string;
+    profilePic?: string | null;
     donations: Types.ObjectId[];
     raisedAmount: number;
     level: string;

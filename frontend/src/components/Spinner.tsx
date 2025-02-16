@@ -13,7 +13,7 @@ const Spinner = ({ size, color }: SpinnerProps) => {
 
     const colorClasses =
         color === "secondary" ? "border-gray-400 border-t-gray-500" :
-        color === "accent" ? "border-yellow-400 border-t-orange-500" :
+        color === "accent" ? "border-gray-300 border-t-green-600" :
         "border-white border-t-blue-500";
 
     return (

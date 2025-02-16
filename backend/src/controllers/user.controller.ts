@@ -88,9 +88,6 @@ export const signup = async (req: Request, res: Response) => {
                     gender: newUser.gender,
                     address: newUser.address,
                     profilePic: newUser.profilePic,
-                    donations: newUser.donations,
-                    raisedAmount: newUser.raisedAmount,
-                    level: newUser.level,
                     code: newUser.code,
                     token
                 });
@@ -101,10 +98,10 @@ export const signup = async (req: Request, res: Response) => {
     }
 }
 
-export const login = async(req: Request, res: Response) => {
+export const login = async (req: Request, res: Response) => {
     try {
-        const {email, password}: LoginBody = req.body;
-        const user = await User.findOne({email});
+        const { email, password }: LoginBody = req.body;
+        const user = await User.findOne({ email });
         if (!user) {
             res.status(400).json({ error: "Cannot find User" });
             return;
@@ -144,9 +141,6 @@ export const login = async(req: Request, res: Response) => {
                 gender: user.gender,
                 address: user.address,
                 profilePic: user.profilePic,
-                donations: user.donations,
-                raisedAmount: user.raisedAmount,
-                level: user.level,
                 code: user.code,
                 token
             });
