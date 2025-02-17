@@ -77,7 +77,7 @@ const Dashboard = () => {
 											<div className="w-full flex flex-col items-center justify-center">
 												<h2 className="text-lg font-semibold text-gray-700">Your Target</h2>
 												<PiTargetBold className="text-gray-300 text-4xl" />
-												<span className="text-xl font-bold text-gray-200">{dashboardData!.target}</span>
+												<span className="text-xl font-bold text-gray-200">₹{dashboardData!.target}</span>
 											</div>
 										</div>
 									</div>

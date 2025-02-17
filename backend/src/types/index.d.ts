@@ -42,3 +42,9 @@ export interface LoginBody {
     email: string;
     password: string;
 }
+
+export interface DonationBody {
+    id: Types.ObjectId;
+    session_id: string;
+    amount: number;
+}

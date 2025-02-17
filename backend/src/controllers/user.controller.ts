@@ -45,7 +45,7 @@ export const signup = async (req: Request, res: Response) => {
 
         const salt = await bcrypt.genSalt(12);
         const passwordHash = await bcrypt.hash(password, salt);
-        const referenceCode = generateReferenceCode(7);
+        const referenceCode = `${name.substring(0, 2)}-${generateReferenceCode(7)}`;
 
         const newUser = new User({
             name,

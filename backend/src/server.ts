@@ -8,9 +8,12 @@ import morgan from "morgan";
 
 import connectToMongoDB from "./db/connectToMongoDb";
 import { client } from "./redis/client";
+import stripe from "./services/stripeInit";
 import authRoutes from "./routes/auth.routes";
 import profileRoutes from "./routes/profile.routes";
 import publicRoutes from "./routes/public.routes";
+import paymentRoutes from "./routes/payment.routes";
+import donationRoutes from "./routes/donation.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,13 +33,22 @@ app.get("/api/v1", (req: Request, res: Response) => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/public", publicRoutes);
+app.use("/api/v1/payments", paymentRoutes);
+app.use("/api/v1/donations", donationRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     connectToMongoDB();
+
     if (client) {
         console.log("Connected to Redis");
     } else {
         console.log("Error in connecting to Redis");
+    }
+
+    if (stripe) {
+        console.log("Stripe Initialized");
+    } else {
+        console.log("Error in Initializing Stripe");
     }
 });
