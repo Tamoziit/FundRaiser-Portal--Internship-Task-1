@@ -81,4 +81,5 @@ export interface Donation {
     amount: number;
     code: string;
     donationType: "External" | "Self";
+    createdAt: string;
 }

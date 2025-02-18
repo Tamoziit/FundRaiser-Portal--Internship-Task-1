@@ -38,7 +38,7 @@ export const signup = async (req: Request, res: Response) => {
         const sameUser = await User.findOne({ $or: [{ email }, { mobileNo }] });
         if (sameUser) {
             res.status(400).json({
-                error: sameUser.mobileNo === mobileNo ? "A user with this mobile no. already exists. Use another mobile no., or try logging into your account." : "A user with this Aadhar No. already exists. Use another Aadhar No., or try logging into your account."
+                error: sameUser.mobileNo === mobileNo ? "A user with this mobile no. already exists. Use another mobile no., or try logging into your account." : "A user with this Email. already exists. Use another Email., or try logging into your account."
             });
             return;
         }

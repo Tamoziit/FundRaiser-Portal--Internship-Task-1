@@ -26,7 +26,7 @@ const ProgressBar = ({
                 <path
                     d="M10,50 A40,40 0 0,1 110,50"
                     fill="none"
-                    stroke="#60A5FA"
+                    stroke="#1D4ED8"
                     strokeWidth={strokeWidth}
                     strokeDasharray={`${progress}, ${circumference}`}
                     strokeLinecap="round"

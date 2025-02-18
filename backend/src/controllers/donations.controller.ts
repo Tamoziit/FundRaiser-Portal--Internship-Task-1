@@ -72,3 +72,31 @@ export const getVolunteerInfo = async (req: Request, res: Response) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
+
+export const getMyTransactions = async (req: Request, res: Response) => {
+    try {
+        const donationType = req.query.type as string;
+
+        const user = await User.findById(req.user?._id);
+        if (!user) {
+            res.status(400).json({ error: "Couldn't find user" });
+            return;
+        }
+
+        if (!user.donations || user.donations.length === 0) {
+            res.status(200).json({ donations: [] });
+            return;
+        }
+
+        let donations = await Donation.find({ _id: { $in: user.donations } });
+
+        if (donationType) {
+            donations = donations.filter(donation => donation.donationType === donationType);
+        }
+
+        res.status(200).json(donations);
+    } catch (error) {
+        console.error("Error in getMyTransactions controller", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
