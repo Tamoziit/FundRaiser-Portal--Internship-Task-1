@@ -4,14 +4,14 @@ import { AuthUser } from "../../types";
 import useGetVolunteerData from "../../hooks/useGetVolunteerInfo";
 import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner";
-import usePaymentHandler from "../../hooks/usePaymentHandler";
+import useSelfPaymentHandler from "../../hooks/useSelfPaymentHandler";
 
-const DonationForm = () => {
+const SelfDonationForm = () => {
 	const { code } = useParams();
 	const [volunteerData, setVolunteerData] = useState<AuthUser | null>();
 	const { loading, volunteerInfo } = useGetVolunteerData();
 	const [tempAmt, setTempAmt] = useState<string>("50");
-	const { loading: paying, payment } = usePaymentHandler();
+	const { loading: paying, payment } = useSelfPaymentHandler();
 
 	const getVolunteerInfo = async () => {
 		if (code) {
@@ -103,4 +103,4 @@ const DonationForm = () => {
 	)
 }
 
-export default DonationForm;
+export default SelfDonationForm;

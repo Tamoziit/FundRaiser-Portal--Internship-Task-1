@@ -2,18 +2,18 @@ import { useState } from "react"
 import toast from "react-hot-toast";
 import { ConfirmDonationProps } from "../types";
 
-const useProcessDonation = () => {
+const useProcessSelfDonation = () => {
     const [loading, setLoading] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const donation = async ({
+    const selfDonation = async ({
         id,
         session_id,
         amount,
     }: ConfirmDonationProps) => {
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/donations/process-donation`, {
+            const res = await fetch(`${apiUrl}/donations/process-selfDonation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const useProcessDonation = () => {
         }
     }
 
-    return { loading, donation }
+    return { loading, selfDonation }
 }
 
-export default useProcessDonation;
+export default useProcessSelfDonation;

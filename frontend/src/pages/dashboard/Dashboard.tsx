@@ -9,11 +9,13 @@ import { PiTargetBold } from "react-icons/pi";
 import { GiGrowth } from "react-icons/gi";
 import ProgressBar from "../../components/ProgressBar";
 import CTA from "../../components/CTA";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
 	const { authUser } = useAuthContext();
 	const { loading, dashboard } = useGetDashboardData();
 	const [dashboardData, setDashboardData] = useState<DashboardData | null>();
+	const navigate = useNavigate();
 
 	const getDashboardData = async () => {
 		const data = await dashboard();
@@ -102,8 +104,11 @@ const Dashboard = () => {
 				)}
 				<div className="mt-6 w-full lg:w-[80%] h-[1.5px] bg-gray-600" />
 
-				<div className="flex py-5 w-full">
+				<div className="flex flex-col gap-3 items-center justify-center py-5 w-full">
 					<CTA />
+					<button className="btn-submit !rounded-md !py-3 !px-19" onClick={() => navigate(`/donate/self/${authUser?.code}`)}>
+						Donate Yourself
+					</button>
 				</div>
 			</div>
 		</div>

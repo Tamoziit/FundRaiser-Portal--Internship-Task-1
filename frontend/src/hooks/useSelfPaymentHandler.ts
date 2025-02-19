@@ -1,25 +1,30 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
-import { ConfirmDonationProps } from "../types";
+import { PaymentProps } from "../types";
 
-const useProcessDonation = () => {
+const useSelfPaymentHandler = () => {
     const [loading, setLoading] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    const donation = async ({
+    const payment = async ({
         id,
-        session_id,
+        name,
+        code,
         amount,
-    }: ConfirmDonationProps) => {
+        profilePic,
+    }: PaymentProps) => {
+        const success = validator(amount);
+        if(!success) return;
+        
         setLoading(true);
         try {
-            const res = await fetch(`${apiUrl}/donations/process-donation`, {
+            const res = await fetch(`${apiUrl}/payments/initiate-selfDonation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("FR-token")}`
                 },
-                body: JSON.stringify({ id, session_id, amount })
+                body: JSON.stringify({ id, name, code, amount, profilePic, type: "External" })
             });
             const data = await res.json();
 
@@ -28,7 +33,6 @@ const useProcessDonation = () => {
             }
 
             if (data) {
-                toast.success("Donation made Successfully!")
                 return data;
             }
         } catch (error) {
@@ -43,7 +47,17 @@ const useProcessDonation = () => {
         }
     }
 
-    return { loading, donation }
+    return { loading, payment }
 }
 
-export default useProcessDonation;
+export default useSelfPaymentHandler;
+
+
+function validator(amount: number) {
+    if(amount < 50) {
+        toast.error("Minimum amount required is ₹50");
+        return false;
+    }
+
+    return true;
+}

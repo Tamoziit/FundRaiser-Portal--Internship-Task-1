@@ -11,7 +11,7 @@ const usePaymentHandler = () => {
         name,
         code,
         amount,
-        profilePic
+        profilePic,
     }: PaymentProps) => {
         const success = validator(amount);
         if(!success) return;
@@ -24,7 +24,7 @@ const usePaymentHandler = () => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.getItem("FR-token")}`
                 },
-                body: JSON.stringify({ id, name, code, amount, profilePic })
+                body: JSON.stringify({ id, name, code, amount, profilePic, type: "External" })
             });
             const data = await res.json();
 

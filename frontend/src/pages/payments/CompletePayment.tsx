@@ -4,27 +4,35 @@ import { Donation } from "../../types";
 import useProcessDonation from "../../hooks/useProcessDonation";
 import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner";
+import useProcessSelfDonation from "../../hooks/useProcessSelfDonation";
 
 const CompletePayment = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const [donationData, setDonationData] = useState<Donation | null>();
   const { loading, donation } = useProcessDonation();
+  const { loading: enLoading, selfDonation } = useProcessSelfDonation();
 
   const sessionId = queryParams.get("session_id");
   const id = queryParams.get("id");
   const name = queryParams.get("name");
   const referenceCode = queryParams.get("referenceCode");
   const amount = queryParams.get("amount");
+  const type = queryParams.get("type") as "External" | "Self";
 
   const processDonation = async () => {
-    if (id && sessionId && amount) {
+    if (id && sessionId && amount && type) {
       const body = {
         id,
         session_id: sessionId,
         amount: Number(amount),
       }
-      const res = await donation(body);
+      let res;
+      if (type === "External") {
+        res = await donation(body);
+      } else {
+        res = await selfDonation(body);
+      }
 
       setDonationData(res);
     } else {
@@ -121,10 +129,10 @@ const CompletePayment = () => {
 
             <button
               className="mt-2 mb-1 btn-submit w-full lg:w-[80%]"
-              disabled={loading}
+              disabled={loading || enLoading}
               onClick={processDonation}
             >
-              {loading ? <Spinner size="small" color="secondary" /> : "Confirm Donation"}
+              {loading || enLoading ? <Spinner size="small" color="secondary" /> : "Confirm Donation"}
             </button>
           </>
         )}

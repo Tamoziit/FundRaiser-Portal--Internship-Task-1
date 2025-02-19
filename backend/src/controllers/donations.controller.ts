@@ -57,6 +57,57 @@ export const processDonation = async (req: Request, res: Response) => {
     }
 }
 
+export const processSelfDonation = async (req: Request, res: Response) => {
+    try {
+        const { id, session_id, amount }: DonationBody = req.body;
+
+        let volunteer = await User.findById(id);
+        const donor = await stripe.checkout.sessions.retrieve(session_id, {
+            expand: ['payment_intent.payment_method']
+        });
+
+        if (volunteer && donor) {
+            const paymentIntent = donor.payment_intent as Stripe.PaymentIntent;
+
+            const newDonation = new Donation({
+                payment_intent_id: paymentIntent.id,
+                volunteer_id: id,
+                volunteer_name: volunteer.name,
+                volunteer_email: volunteer.email,
+                donor_name: donor.customer_details?.name || req.user?.name,
+                donor_email: donor.customer_details?.email || req.user?.email,
+                donor_mobileNo: donor.customer_details?.phone || req.user?.mobileNo,
+                amount: amount,
+                code: volunteer.code,
+                donationType: "Self"
+            });
+
+            if (newDonation) {
+                volunteer.raisedAmount += amount;
+                volunteer.donations.push(newDonation._id);
+
+                levels.forEach((level) => {
+                    if (volunteer.raisedAmount >= level.start && volunteer.raisedAmount <= level.target) {
+                        volunteer.level = level.level;
+                    }
+                });
+
+                await Promise.all([newDonation.save(), volunteer.save()]);
+            } else {
+                res.status(400).json({ error: "Could not process payment, Refund will be processed within 5-7 days" });
+                return;
+            }
+
+            res.status(200).json(newDonation);
+        } else {
+            res.status(400).json({ error: "Error in processing donation" });
+        }
+    } catch (error) {
+        console.log("Error in processDonation controller", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 export const getVolunteerInfo = async (req: Request, res: Response) => {
     try {
         const code = req.params.code;
@@ -94,7 +145,7 @@ export const getMyTransactions = async (req: Request, res: Response) => {
             donations = donations.filter(donation => donation.donationType === donationType);
         }
 
-        res.status(200).json(donations);
+        res.status(200).json(donations.reverse());
     } catch (error) {
         console.error("Error in getMyTransactions controller", error);
         res.status(500).json({ error: "Internal Server Error" });

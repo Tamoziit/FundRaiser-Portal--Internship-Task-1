@@ -13,6 +13,7 @@ import Leaderboard from "./pages/leaderboard/Leaderboard";
 import CompletePayment from "./pages/payments/CompletePayment";
 import CancelPayement from "./pages/payments/CancelPayement";
 import MissionPage from "./pages/mission/MissionPage";
+import SelfDonationForm from "./pages/donate/SelfDonationForm";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signup" element={authUser ? <Navigate to="/home" /> : <Signup />} />
           <Route path="/home" element={authUser ? <Home /> : <Navigate to="/" />} />
           <Route path="/donate/:code" element={<DonationForm />} />
+          <Route path="/donate/self/:code" element={authUser ? <SelfDonationForm /> : <Navigate to="/" />} />
           <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/" />} />
           <Route path="/transactions" element={authUser ? <Transactions /> : <Navigate to="/" />} />
           <Route path="/leaderboard" element={authUser ? <Leaderboard /> : <Navigate to="/" />} />
