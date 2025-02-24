@@ -18,12 +18,12 @@ const About = () => {
     ];
 
     return (
-        <div id="about" className="mt-8 w-full flex flex-col items-center justify-center p-4">
+        <div id="about" className="mt-12 w-full flex flex-col items-center justify-center p-4">
             <div className="w-full text-center">
-                <h1 className="text-[39px] lg:text-[50px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-800 z-10">
+                <h1 className="text-[40px] lg:text-[50px] font-bold gradient-text-1">
                     Why Donate With Us?
                 </h1>
-                <p className="lg:text-lg italic text-gray-500">
+                <p className="lg:text-lg italic text-gray-100">
                     Empowering Change, Rewarding Generosity.
                 </p>
             </div>

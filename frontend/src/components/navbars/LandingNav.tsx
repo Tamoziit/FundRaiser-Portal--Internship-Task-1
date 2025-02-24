@@ -32,14 +32,14 @@ const LandingNavbar = () => {
 	const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
 	return (
-		<div className="py-2 px-8 absolute left-0 top-0 w-full text-white flex items-center justify-between lg:bg-black/20 lg:backdrop-blur-md lg:shadow-md lg:border lg:border-white/20">
+		<div className="py-2 px-8 absolute left-0 top-0 w-full text-white flex items-center justify-between lg:shadow-md card-1 !rounded-none">
 			<div>
 				<img src="/Logo.png" alt="logo" className="w-[65px]" />
 			</div>
 
 			{/* Hamburger Icon for Mobile */}
 			<button
-				className="lg:hidden flex items-center text-gray-500 focus:outline-none"
+				className="lg:hidden flex items-center text-gray-700 focus:outline-none"
 				onClick={toggleMenu}
 			>
 				<svg
@@ -85,7 +85,7 @@ const LandingNavbar = () => {
 
 			{/* Mobile Navigation */}
 			{isMenuOpen && (
-				<div className="absolute top-full right-0 w-full p-3 lg:hidden bg-black/20 backdrop-blur-xl shadow-md border border-white/20 z-20">
+				<div className="absolute top-full right-0 w-full p-3 lg:hidden card-1 !rounded-none z-20">
 					<ul className="flex flex-col items-center space-y-4 py-4">
 						{items.map((item, _idx) => (
 							<li key={_idx} className="flex items-center gap-2">

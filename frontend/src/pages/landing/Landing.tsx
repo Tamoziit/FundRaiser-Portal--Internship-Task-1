@@ -2,56 +2,132 @@ import { Link } from "react-router-dom";
 import LandingNav from "../../components/navbars/LandingNav";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About from "../../components/landing/About";
 import Mission from "../../components/landing/Mission";
+import { IoBookSharp } from "react-icons/io5";
+import { FaHandHoldingHeart } from "react-icons/fa";
+import { GrGrow } from "react-icons/gr";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Landing = () => {
-  const imageRef = useRef<HTMLImageElement | null>(null);
+  const divRef = useRef(null);
+  const titleRef = useRef(null);
 
   useEffect(() => {
-    gsap.from(imageRef.current, {
-      y: 200,
-      opacity: 0,
-    });
-    gsap.to(imageRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.in",
-    })
+    gsap.fromTo(divRef.current,
+      {
+        y: 100,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.in"
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { 
+        opacity: 0, 
+        y: 100 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.in",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          markers: false
+        },
+      }
+    );
   }, []);
 
   return (
-    <div>
-      <LandingNav />
+    <div className="w-full min-h-screen flex flex-col items-center justify-center">
+      <div className="z-10">
+        <LandingNav />
+      </div>
 
-      <div className="w-full p-8 pt-24 flex flex-col items-center justify-center gap-4">
-        <div className="flex flex-col items-center justify-center gap-1">
-          <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold text-center bg-gradient-to-r from-gray-500 via-gray-800 to-gray-500 bg-clip-text text-transparent p-4 rounded-lg transform transition-all duration-300 hover:scale-105 text-shadow-metallic">
-            Welcome to Nayepankh Foundation
+      <div className="relative flex flex-col items-center justify-center text-center h-[500px] md:h-[600px] lg:min-h-screen py-20 px-6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg.jpg')" }}>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
+        <div>
+          <h1 className="relative text-4xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-lg uppercase opacity-0" ref={divRef}>
+            Nayepankh Foundation
           </h1>
-          <span className="text-md md:text-xl font-semibold text-slate-500 tracking-wide leading-relaxed text-center">
-            A Cause Worth Fighting For.
-          </span>
         </div>
+        <p className="relative text-xl md:text-2xl font-medium text-gray-300 mt-4 max-w-2xl">
+          It's that easy to bring a Smile on Their Faces!
+        </p>
+        <div className="relative mt-6 flex gap-4">
+          <Link to="/login" className="btn-primary !px-10 !md:px-16 text-lg flex items-center justify-center">
+            Login
+          </Link>
+          <Link to="/signup" className="btn-secondary text-lg flex items-center justify-center">
+            Become a Volunteer
+          </Link>
+        </div>
+      </div>
 
-        <img
-          ref={imageRef}
-          src="/homeLogo.png"
-          alt="Landing"
-          className="w-[500px] opacity-0"
-        />
+      <div className="flex flex-col items-center justify-center py-16 px-6 md:-translate-y-[37%] lg:-translate-y-[60%]">
+        <h2 className="text-3xl md:text-5xl font-bold text-yellow-400 mb-3">Our Mission</h2>
+        <p className="text-lg text-gray-100 max-w-3xl text-center mb-2">
+          We don't ask for much, just help us with what you can- Be it Money, Skill or Your Time.
+        </p>
 
-        <div className="flex gap-5 mt-8">
-          <Link to="/login" className="btn-primary w-[130px] lg:w-[180px] flex items-center justify-center py-2">Login</Link>
-          <Link to="/signup" className="btn-secondary w-[130px] lg:w-[180px] flex items-center justify-center py-2">Signup</Link>
+        <div className="flex flex-col md:flex-row gap-6 items-center justify-center w-[95%] mx-auto">
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+            <IoBookSharp className="text-slate-800 text-3xl" />
+            <h1 className="text-xl text-center font-bold text-white">Education Access</h1>
+            <p className="text-gray-900 text-center">
+              Providing quality education and essential learning resources to underprivileged students in slum and rural areas.
+            </p>
+          </div>
+
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+            <FaHandHoldingHeart className="text-slate-800 text-3xl" />
+            <h1 className="text-xl text-center font-bold text-white">Basic Necessities</h1>
+            <p className="text-gray-900 text-center">
+              Ensuring children receive food, clothing, and a supportive environment for learning and personal growth.
+            </p>
+          </div>
+
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+            <GrGrow className="text-slate-800 text-3xl" />
+            <h1 className="text-xl text-center font-bold text-white">Empowerment & Opportunities</h1>
+            <p className="text-gray-900 text-center">
+              Offering scholarships, opening schools, and improving facilities to build confidence and create better future prospects.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="md:-mt-34 px-4 flex flex-col lg:flex-row gap-6 items-center justify-center lg:w-[85%]" ref={titleRef}>
+        <img src="homeLogo.png" alt="Logo" />
+
+        <div className="flex flex-col items-center justify-center lg:items-start">
+          <h1 className="text-2 text-3xl md:text-6xl text-center lg:text-left">
+            Welcome to <span className="!text-4xl md:!text-6xl text-yellow-400">NayePankh Foundation</span>
+          </h1>
+          <p className="mt-4">
+            "NayePankh Foundation" is a non governmental organisation with a strong desire to help the society and make it a better place for all, by doing everything in our power and to make our vision successful we would require your vital support. Service to mankind is the service to god. Let's revolutionise the society together!.
+          </p>
         </div>
       </div>
 
       <About />
       <Mission />
     </div>
-  )
-}
+  );
+};
 
 export default Landing;
