@@ -56,13 +56,14 @@ const DonationForm = () => {
 					<Spinner size="large" color="primary" />
 				</div>
 			) : (
-				<div className="glassmorphic py-4 px-4 md:px-8 flex flex-col items-center justify-center gap-3 w-[90%] md:w-[55%] lg:w-[35%]">
+				<div className="glassmorphic-2 !backdrop-blur-xl py-4 px-4 md:px-8 flex flex-col items-center justify-center gap-3 w-[90%] md:w-[55%] lg:w-[35%]">
 					<div className="flex flex-col justify-center items-center gap-0.5">
 						<img src={volunteerData?.profilePic || "/placeholderImg.png"} alt="Profile Img" className="size-36 rounded-full border-4 border-gray-300 mb-2.5" />
-						<h1 className="text-3xl font-semibold text-gray-100">
+						<h1 className="text-3xl flex flex-col items-center justify-center font-semibold text-gray-100">
 							{volunteerData?.name}
+							<span className="text-base text-gray-400">(Volunteer)</span>
 						</h1>
-						<h2 className="text-lg font-semibold text-gray-800">
+						<h2 className="text-lg font-semibold text-gray-300 mt-1">
 							{volunteerData?.code}
 						</h2>
 					</div>
@@ -79,7 +80,7 @@ const DonationForm = () => {
 								onChange={(e) => setTempAmt(e.target.value)}
 							/>
 						</div>
-						<p className="text-sm text-gray-800 text-center">*min. amount required: ₹50</p>
+						<p className="text-sm text-gray-400 text-center">*min. amount required: ₹50</p>
 					</div>
 
 					<div className="w-full flex items-center justify-center mt-6">

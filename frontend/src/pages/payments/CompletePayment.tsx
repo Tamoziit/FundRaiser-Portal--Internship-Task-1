@@ -41,36 +41,36 @@ const CompletePayment = () => {
   }
 
   return (
-    <div className="flex w-full h-screen items-center justify-center">
+    <div className="flex flex-col w-full h-screen items-center justify-center">
       <div
         className="absolute inset-0 bg-[url('/Logo.png')] bg-center bg-contain bg-no-repeat opacity-50 md:opacity-40"
       />
 
-      <div className="glassmorphic-2 py-4 px-4 md:px-8 flex flex-col items-center justify-center gap-3 w-[90%] md:w-[55%] lg:w-[35%]">
+      <div className="glassmorphic-2 !backdrop-blur-xl py-4 px-4 md:px-8 flex flex-col items-center justify-center gap-3 w-[90%] md:w-[55%] lg:w-[35%]">
         {donationData ? (
           <>
-            <h1 className="text-xl md:text-2xl font-semibold text-center text-gray-800">🎊Donation Successful🎉</h1>
+            <h1 className="text-xl md:text-2xl font-semibold text-center text-gray-100">🎊Donation Successful🎉</h1>
 
-            <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-700" />
+            <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-300" />
 
             <div className="flex flex-col justify-center w-full">
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Payment Id:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Payment Id:&nbsp;</span>
                 <span className="break-all">{donationData.payment_intent_id}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Volunteer Name:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Volunteer Name:&nbsp;</span>
                 <span className="break-words">{donationData.volunteer_name}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Volunteer Email:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Volunteer Email:&nbsp;</span>
                 <span className="break-words">{donationData.volunteer_email}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Reference Code:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Reference Code:&nbsp;</span>
                 <span className="break-all">{referenceCode}</span>
               </div>
 
@@ -80,50 +80,50 @@ const CompletePayment = () => {
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Donor Email:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Donor Email:&nbsp;</span>
                 <span className="break-words">{donationData.donor_email}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Donor Mobile No.:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Donor Mobile No.:&nbsp;</span>
                 <span className="break-words">{donationData.donor_mobileNo}</span>
               </div>
 
-              <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-700 my-3" />
+              <div className="h-[0.8px] w-full bg-gray-300 my-3" />
 
               <div className="flex flex-wrap items-center w-full text-xl">
-                <span className="font-semibold">Amount:&nbsp;</span>
-                <span className="whitespace-nowrap">₹{donationData.amount}</span>
+                <span className="font-semibold text-gray-300">Amount:&nbsp;</span>
+                <span className="whitespace-nowrap font-bold">₹{donationData.amount}</span>
               </div>
             </div>
           </>
         ) : (
           <>
-            <h1 className="text-xl md:text-2xl font-semibold text-center text-gray-800">Just One Step Behind! 🚀</h1>
+            <h1 className="text-xl md:text-2xl font-semibold text-center text-gray-100">Just One Step Behind! 🚀</h1>
 
-            <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-700" />
+            <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-300" />
 
             <div className="flex flex-col justify-center w-full">
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Session Id:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Session Id:&nbsp;</span>
                 <span className="break-all">{sessionId}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Volunteer Name:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Volunteer Name:&nbsp;</span>
                 <span className="break-words">{name}</span>
               </div>
 
               <div className="flex flex-wrap items-center w-full">
-                <span className="font-semibold">Reference Code:&nbsp;</span>
+                <span className="font-semibold text-gray-300">Reference Code:&nbsp;</span>
                 <span className="break-all">{referenceCode}</span>
               </div>
 
-              <div className="h-[0.8px] w-full lg:w-[90%] bg-gray-700 my-3" />
+              <div className="h-[0.8px] w-full bg-gray-300 my-3" />
 
               <div className="flex flex-wrap items-center w-full text-xl">
-                <span className="font-semibold">Amount:&nbsp;</span>
-                <span className="whitespace-nowrap">₹{amount}</span>
+                <span className="font-semibold text-gray-300">Amount:&nbsp;</span>
+                <span className="whitespace-nowrap font-bold">₹{amount}</span>
               </div>
             </div>
 

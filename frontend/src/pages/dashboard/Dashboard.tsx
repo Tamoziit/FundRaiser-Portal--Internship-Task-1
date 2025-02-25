@@ -25,13 +25,14 @@ const Dashboard = () => {
 	useEffect(() => {
 		getDashboardData();
 	}, []);
-	console.log(dashboardData);
 
 	return (
-		<div>
-			<AppNavbar />
+		<div className="w-full flex flex-col items-center justify-center">
+			<div className="z-20">
+				<AppNavbar />
+			</div>
 
-			<div className="pt-24 lg:pt-30 py-4 px-8 flex flex-col items-center justify-center">
+			<div className="pt-24 lg:pt-30 py-4 px-8 flex flex-col items-center justify-center w-full">
 				{loading ? (
 					<div className="flex items-center justify-center w-full h-screen -mt-24">
 						<Spinner size="large" color="primary" />
@@ -47,20 +48,20 @@ const Dashboard = () => {
 
 							<div className="flex flex-col items-center justify-center mt-3 md:mt-0 md:items-end">
 								<span className="text-2xl font-bold text-gray-50">{authUser?.name}</span>
-								<span className="font-medium text-gray-700">{authUser?.email}</span>
-								<span className="font-normal text-gray-800">{authUser?.mobileNo}</span>
+								<span className="font-medium text-gray-300">{authUser?.email}</span>
+								<span className="font-normal text-gray-400">{authUser?.mobileNo}</span>
 							</div>
 						</div>
 
 						<div className="mt-10 flex w-full flex-col gap-4 items-center justify-center">
-							<h1 className="gradient-text-2 text-3xl">Your Stats</h1>
-							<div className="w-full lg:w-[80%] h-[1.5px] bg-gray-500" />
+							<h1 className="gradient-text-2 text-4xl">Your Stats</h1>
+							<div className="w-full lg:w-[80%] h-[1.5px] bg-gray-300" />
 
 							{dashboardData ? (
 								<div className="flex flex-col md:flex-row gap-4 w-full lg:w-[75%] items-center justify-between px-8">
 									<div className="glassmorphic-2 py-4 w-full h-[220px] items-center justify-center">
 										<div className="flex flex-col items-center justify-center w-full h-full gap-0.5">
-											<h1 className="text-lg font-semibold text-gray-700">Amount Raised</h1>
+											<h1 className="text-lg font-semibold text-gray-200">Amount Raised</h1>
 											<ProgressBar
 												raisedAmount={dashboardData!.raisedAmount}
 												target={dashboardData!.target}
@@ -72,12 +73,12 @@ const Dashboard = () => {
 									<div className="glassmorphic-2 py-4 w-full h-[220px] items-center justify-center">
 										<div className="flex flex-col w-full h-full gap-0.5">
 											<div className="w-full flex flex-col items-center justify-center">
-												<h2 className="text-lg font-semibold text-gray-700">Your Level</h2>
+												<h2 className="text-lg font-semibold text-gray-400">Your Level</h2>
 												<FaAward className="text-gray-300 text-4xl" />
 												<span className="text-xl font-bold text-gray-200">{dashboardData!.level}</span>
 											</div>
 											<div className="w-full flex flex-col items-center justify-center">
-												<h2 className="text-lg font-semibold text-gray-700">Your Target</h2>
+												<h2 className="text-lg font-semibold text-gray-400">Your Target</h2>
 												<PiTargetBold className="text-gray-300 text-4xl" />
 												<span className="text-xl font-bold text-gray-200">₹{dashboardData!.target}</span>
 											</div>
@@ -86,7 +87,7 @@ const Dashboard = () => {
 
 									<div className="glassmorphic-2 py-4 w-full h-[220px] items-center justify-center">
 										<div className="w-full h-full flex flex-col items-center justify-center">
-											<h2 className="text-xl font-semibold text-gray-700">Next Level</h2>
+											<h2 className="text-xl font-semibold text-gray-400">Next Level</h2>
 											<GiGrowth className="text-gray-300 text-6xl" />
 											<span className="text-3xl font-bold text-gray-200">{dashboardData!.nextLevel}</span>
 										</div>
@@ -102,7 +103,7 @@ const Dashboard = () => {
 						</div>
 					</>
 				)}
-				<div className="mt-6 w-full lg:w-[80%] h-[1.5px] bg-gray-600" />
+				<div className="mt-6 w-full lg:w-[80%] h-[1.5px] bg-gray-300" />
 
 				<div className="flex flex-col gap-3 items-center justify-center py-5 w-full">
 					<CTA />
@@ -115,4 +116,4 @@ const Dashboard = () => {
 	)
 }
 
-export default Dashboard
+export default Dashboard;

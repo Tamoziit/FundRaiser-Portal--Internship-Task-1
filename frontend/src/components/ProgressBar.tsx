@@ -26,13 +26,13 @@ const ProgressBar = ({
                 <path
                     d="M10,50 A40,40 0 0,1 110,50"
                     fill="none"
-                    stroke="#1D4ED8"
+                    stroke="#EAB308"
                     strokeWidth={strokeWidth}
                     strokeDasharray={`${progress}, ${circumference}`}
                     strokeLinecap="round"
                 />
             </svg>
-            <span className="-mt-0.5 text-lg font-semibold text-gray-700">
+            <span className="-mt-0.5 text-lg font-semibold text-gray-400">
                 {percentage.toFixed(2)}% Raised
             </span>
         </div>
