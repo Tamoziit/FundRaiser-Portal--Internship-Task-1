@@ -4,10 +4,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About from "../../components/landing/About";
-import Mission from "../../components/landing/Mission";
 import { IoBookSharp } from "react-icons/io5";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { GrGrow } from "react-icons/gr";
+import Carousel from "../../components/landing/Carousel";
+import Contact from "../../components/Contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,9 +34,9 @@ const Landing = () => {
   useEffect(() => {
     gsap.fromTo(
       titleRef.current,
-      { 
-        opacity: 0, 
-        y: 100 
+      {
+        opacity: 0,
+        y: 100
       },
       {
         opacity: 1,
@@ -118,14 +119,18 @@ const Landing = () => {
           <h1 className="text-2 text-3xl md:text-6xl text-center lg:text-left">
             Welcome to <span className="!text-4xl md:!text-6xl text-yellow-400">NayePankh Foundation</span>
           </h1>
-          <p className="mt-4">
+          <p className="mt-4 text-center lg:text-left">
             "NayePankh Foundation" is a non governmental organisation with a strong desire to help the society and make it a better place for all, by doing everything in our power and to make our vision successful we would require your vital support. Service to mankind is the service to god. Let's revolutionise the society together!.
           </p>
+          <a href="https://nayepankh.com/" target="_blank" rel="noopener noreferrer" className="btn-secondary !py-1.5 !rounded-full mt-6">
+            More About Us
+          </a>
         </div>
       </div>
 
       <About />
-      <Mission />
+      <Carousel />
+      <Contact />
     </div>
   );
 };
