@@ -76,6 +76,11 @@ export const signup = async (req: Request, res: Response) => {
 
             await client.set(`FR-user:${newUser._id}`, JSON.stringify(payload));
             await client.expire(`FR-user:${newUser._id}`, 30 * 24 * 60 * 60);
+            const metadata = await client.get("metadata");
+            let metadataObj = metadata ? JSON.parse(metadata) : { volunteers: 0, amount: 0 };
+
+            metadataObj.volunteers += 1;
+            await client.set("metadata", JSON.stringify(metadataObj));
 
             res.status(201)
                 .header("Authorization", `Bearer ${token}`)

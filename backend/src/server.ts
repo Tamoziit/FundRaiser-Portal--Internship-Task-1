@@ -14,6 +14,7 @@ import profileRoutes from "./routes/profile.routes";
 import publicRoutes from "./routes/public.routes";
 import paymentRoutes from "./routes/payment.routes";
 import donationRoutes from "./routes/donation.routes";
+import adminRoutes from "./routes/admin.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,6 +36,7 @@ app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/public", publicRoutes);
 app.use("/api/v1/payments", paymentRoutes);
 app.use("/api/v1/donations", donationRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

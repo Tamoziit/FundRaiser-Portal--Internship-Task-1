@@ -5,6 +5,7 @@ import stripe from "../services/stripeInit";
 import Donation from "../models/donation.model";
 import Stripe from "stripe";
 import { levels } from "../data/constants";
+import { client } from "../redis/client";
 
 export const processDonation = async (req: Request, res: Response) => {
     try {
@@ -42,6 +43,11 @@ export const processDonation = async (req: Request, res: Response) => {
                 });
 
                 await Promise.all([newDonation.save(), volunteer.save()]);
+                const metadata = await client.get("metadata");
+                let metadataObj = metadata ? JSON.parse(metadata) : { volunteers: 0, amount: 0 };
+
+                metadataObj.amount += amount;
+                await client.set("metadata", JSON.stringify(metadataObj));
             } else {
                 res.status(400).json({ error: "Could not process payment, Refund will be processed within 5-7 days" });
                 return;
@@ -93,6 +99,11 @@ export const processSelfDonation = async (req: Request, res: Response) => {
                 });
 
                 await Promise.all([newDonation.save(), volunteer.save()]);
+                const metadata = await client.get("metadata");
+                let metadataObj = metadata ? JSON.parse(metadata) : { volunteers: 0, amount: 0 };
+
+                metadataObj.amount += amount;
+                await client.set("metadata", JSON.stringify(metadataObj));
             } else {
                 res.status(400).json({ error: "Could not process payment, Refund will be processed within 5-7 days" });
                 return;

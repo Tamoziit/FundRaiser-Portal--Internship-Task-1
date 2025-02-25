@@ -30,17 +30,20 @@ const Signup = () => {
   }
 
   return (
-    <div className="flex flex-col gap-3 items-center justify-center min-h-screen w-full pb-6 pt-4 lg:pt-0" >
+    <div className="flex flex-col gap-3 items-center justify-center min-h-screen w-full pb-6 pt-4 lg:pt-0">
+      <div
+        className="absolute inset-0 bg-[url('/Logo.png')] bg-center bg-contain bg-no-repeat opacity-50 md:opacity-40"
+      />
       <h1 className="text-[30px] md:text-[35px] lg:text-[40px] gradient-text-1">Signup</h1>
-      <div className="h-[3.3px] -mt-1 bg-green-500 w-10 rounded-lg" />
+      <div className="h-[3.3px] -mt-1 bg-yellow-600 w-10 rounded-lg" />
 
       <div className="flex w-full items-center justify-center">
         <div className="flex overflow-hidden">
-          <div className="hidden lg:flex items-center justify-center w-[450px] glassmorphic p-4">
-            <img src="/Logo.png" alt="signup" className="object-cover h-[300px] -translate-y-5" />
+          <div className="hidden lg:flex items-center justify-center w-[450px] backdrop-filter backdrop-blur-2xl p-6 border-2 border-gray-100 lg:rounded-l-lg">
+            <img src="/signup.jpg" alt="signup" className="object-cover object-center h-full rounded-lg" />
           </div>
 
-          <form className="flex flex-col gap-4 items-start justify-center glassmorphic p-4 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-4 items-start justify-center glassmorphic backdrop-filter backdrop-blur-2xl border-2 border-gray-100 rounded-lg lg:rounded-none lg:rounded-r-lg p-6 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
               <label className="text-lg font-medium text-gray-50">Name</label>
               <input

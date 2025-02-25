@@ -88,7 +88,7 @@ const DonationForm = () => {
 						</p>
 					</div>
 
-					<div className="w-[90%] flex items-center justify-center mt-5 mb-1.5">
+					<div className="w-[90%] flex items-center justify-center mt-5 mb-1.5 z-20">
 						<button
 							className="btn-submit !text-2xl hover:!bg-blue-600 focus:!ring-blue-400 w-full"
 							onClick={handlePayment}
