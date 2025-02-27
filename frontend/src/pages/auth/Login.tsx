@@ -24,20 +24,20 @@ const Login = () => {
   return (
     <div className="flex flex-col gap-3 items-center justify-center min-h-screen w-full rounded-xl">
       <div
-        className="absolute inset-0 bg-[url('/Logo.png')] bg-center bg-contain bg-no-repeat opacity-50 md:opacity-40"
+        className="absolute inset-0 bg-[url('/Logo.png')] bg-center bg-contain bg-no-repeat opacity-70 md:opacity-60"
       />
-      <h1 className="text-[30px] md:text-[40px] lg:text-[50px] gradient-text-1">Login</h1>
-      <div className="h-[3.3px] -mt-1 bg-yellow-600 w-10 rounded-lg" />
+      <h1 className="text-[30px] md:text-[40px] lg:text-[50px] gradient-text-2">Login</h1>
+      <div className="h-[3.3px] -mt-1 bg-blue-500 w-10 rounded-lg" />
 
       <div className="flex w-full items-center justify-center">
         <div className="flex overflow-hidden">
-          <div className="hidden lg:flex items-center justify-center w-[450px] glassmorphic backdrop-filter backdrop-blur-2xl p-6 border-2 border-gray-100 lg:rounded-l-lg">
+          <div className="hidden lg:flex items-center justify-center w-[450px] glassmorphic-2 backdrop-filter backdrop-blur-2xl p-6 border-2 !border-gray-700 lg:!rounded-none lg:!rounded-l-lg">
             <img src="/mission1.jpg" alt="signup" className="object-cover rounded-lg h-[300px]" />
           </div>
 
-          <form className="flex flex-col gap-7 items-start justify-center glassmorphic backdrop-filter backdrop-blur-2xl border-2 border-gray-100 rounded-lg lg:rounded-none lg:rounded-r-lg p-6 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-7 items-start justify-center glassmorphic-2 backdrop-filter backdrop-blur-2xl !border-gray-700 rounded-lg lg:!rounded-none lg:!rounded-r-lg p-6 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1 w-full">
-              <label className="text-lg font-medium text-gray-50">Email</label>
+              <label className="text-lg font-medium text-gray-800">Email</label>
               <input
                 type="email"
                 placeholder="Enter your Email"
@@ -49,7 +49,7 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col gap-1 w-full">
-              <label className="text-lg font-medium text-gray-50">Password</label>
+              <label className="text-lg font-medium text-gray-800">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -80,7 +80,7 @@ const Login = () => {
             </div>
 
             <div className="flex -mt-7 w-full items-center justify-center">
-              <Link to="/signup" className="text-gray-50 hover:text-blue-300">Don't have an Account? Signup</Link>
+              <Link to="/signup" className="text-gray-700 hover:text-blue-700 hover:font-semibold">Don't have an Account? Signup</Link>
             </div>
           </form>
         </div>

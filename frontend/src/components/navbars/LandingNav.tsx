@@ -9,22 +9,22 @@ const LandingNavbar = () => {
 	const items = [
 		{
 			name: "About",
-			icon: <FaListAlt className="text-gray-700 font-bold" />,
+			icon: <FaListAlt className="text-gray-800 font-bold" />,
 			link: "#about",
 		},
 		{
 			name: "Mission",
-			icon: <VscWorkspaceTrusted className="text-gray-700 font-bold" />,
+			icon: <VscWorkspaceTrusted className="text-gray-800 font-bold" />,
 			link: "#mission",
 		},
 		{
 			name: "Contact",
-			icon: <FaPhoneAlt className="text-gray-700 font-bold" />,
+			icon: <FaPhoneAlt className="text-gray-800 font-bold" />,
 			link: "#contact",
 		},
 		{
 			name: "Login",
-			icon: <MdOutlineLogin className="text-gray-700 font-bold" />,
+			icon: <MdOutlineLogin className="text-gray-800 font-bold" />,
 			link: "/login",
 		},
 	];
@@ -39,7 +39,7 @@ const LandingNavbar = () => {
 
 			{/* Hamburger Icon for Mobile */}
 			<button
-				className="lg:hidden flex items-center text-gray-700 focus:outline-none"
+				className="lg:hidden flex items-center text-gray-800 focus:outline-none"
 				onClick={toggleMenu}
 			>
 				<svg
@@ -75,7 +75,7 @@ const LandingNavbar = () => {
 						<a
 							key={_idx}
 							href={item.link}
-							className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
+							className="relative text-lg font-medium text-gray-800 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-800 before:transition-all before:duration-300 hover:before:w-full"
 						>
 							{item.name}
 						</a>
@@ -92,7 +92,7 @@ const LandingNavbar = () => {
 								<span>{item.icon}</span>
 								<a
 									href={item.link}
-									className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
+									className="relative text-lg font-medium text-gray-800 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-800 before:transition-all before:duration-300 hover:before:w-full"
 									onClick={() => setIsMenuOpen(false)}
 								>
 									{item.name}

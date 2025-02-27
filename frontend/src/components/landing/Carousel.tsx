@@ -27,17 +27,17 @@ const Carousel = () => {
 	};
 
 	return (
-		<div className="relative w-full max-w-2xl mx-auto overflow-hidden rounded-xl shadow-lg mt-12">
+		<div className="relative w-full max-w-2xl mx-auto overflow-hidden mt-12">
 			<div className="w-full text-center">
 				<h1 className="text-[40px] lg:text-[50px] font-bold gradient-text-1">
 					Think global, Act local!
 				</h1>
-				<p className="lg:text-lg italic text-gray-100 px-3">
+				<p className="lg:text-lg italic text-gray-800 px-3">
 					At NayePankh Foundation, we are committed to creating positive change and empowering communities.
 				</p>
 			</div>
 
-			<div className="relative flex items-center justify-center mt-10 px-4">
+			<div className="relative w-full flex items-center justify-center mt-10 px-4">
 				<AnimatePresence>
 					<motion.img
 						key={currentIndex}

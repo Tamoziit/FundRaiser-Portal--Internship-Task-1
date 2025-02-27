@@ -38,9 +38,9 @@ const Landing = () => {
       </div>
 
       <div className="relative flex flex-col items-center justify-center text-center h-[500px] md:h-[600px] lg:min-h-screen py-20 px-6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg.jpg')" }}>
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+        <div className="absolute inset-0 bg-black opacity-75"></div>
         <div>
-          <h1 className="relative text-4xl md:text-7xl font-extrabold text-yellow-400 drop-shadow-lg uppercase opacity-0" ref={divRef}>
+          <h1 className="relative text-4xl md:text-7xl font-extrabold text-white drop-shadow-lg uppercase opacity-0" ref={divRef} style={{ textShadow: "0px 0px 10px #3B82F6" }}>
             Nayepankh Foundation
           </h1>
         </div>
@@ -48,23 +48,25 @@ const Landing = () => {
           It's that easy to bring a Smile on Their Faces!
         </p>
         <div className="relative mt-6 flex gap-4">
-          <Link to="/login" className="btn-primary !px-10 !md:px-16 text-lg flex items-center justify-center">
+          <Link to="/login" className="btn-primary !px-7 md:!px-16 text-base md:text-lg flex items-center justify-center">
             Login
           </Link>
-          <Link to="/signup" className="btn-secondary text-lg flex items-center justify-center">
+          <Link to="/signup" className="btn-secondary text-base md:text-lg flex items-center justify-center">
             Become a Volunteer
           </Link>
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center py-16 px-6 md:-translate-y-[37%] lg:-translate-y-[60%]">
-        <h2 className="text-3xl md:text-5xl font-bold text-yellow-400 mb-3">Our Mission</h2>
-        <p className="text-lg text-gray-100 max-w-3xl text-center mb-2">
+      <div id="mission" className="flex flex-col items-center justify-center py-10 md:py-16 px-6 md:-translate-y-[37%] lg:-translate-y-[60%]">
+        <h2 className="text-3xl md:text-5xl font-bold mb-3 text-outline-yellow">
+          Our Mission
+        </h2>
+        <p className="text-base md:text-lg text-gray-800 md:text-gray-100 italic max-w-3xl text-center mb-2">
           We don't ask for much, just help us with what you can- Be it Money, Skill or Your Time.
         </p>
 
         <div className="flex flex-col md:flex-row gap-6 items-center justify-center w-[95%] mx-auto">
-          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg hover:!bg-slate-500">
             <IoBookSharp className="text-slate-800 text-3xl" />
             <h1 className="text-xl text-center font-bold text-white">Education Access</h1>
             <p className="text-gray-900 text-center">
@@ -72,7 +74,7 @@ const Landing = () => {
             </p>
           </div>
 
-          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg hover:!bg-slate-500">
             <FaHandHoldingHeart className="text-slate-800 text-3xl" />
             <h1 className="text-xl text-center font-bold text-white">Basic Necessities</h1>
             <p className="text-gray-900 text-center">
@@ -80,7 +82,7 @@ const Landing = () => {
             </p>
           </div>
 
-          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg">
+          <div className="card-1 flex flex-col items-center justify-center gap-2 p-6 w-full md:w-1/3 min-h-[200px] bg-gray-800 rounded-lg shadow-lg hover:!bg-slate-500">
             <GrGrow className="text-slate-800 text-3xl" />
             <h1 className="text-xl text-center font-bold text-white">Empowerment & Opportunities</h1>
             <p className="text-gray-900 text-center">

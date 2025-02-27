@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-900 text-white">
+      <div className="min-h-screen bg-gray-50 text-gray-900">
         <Routes>
           <Route path="/" element={authUser ? <Navigate to="/home" /> : <Landing />} />
           <Route path="/login" element={authUser ? <Navigate to="/home" /> : <Login />} />

@@ -25,18 +25,18 @@ const Banner = () => {
                 <Spinner size="medium" color="primary" />
             ) : (
                 <>
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 z-10">
                         <FaUsers className="text-3xl md:text-5xl text-gray-800" />
                         <div>
-                            <p className="text-base md:text-xl font-semibold text-gray-700">Total Volunteers</p>
+                            <p className="text-base md:text-xl font-semibold text-gray-100">Total Volunteers</p>
                             <p className="text-2xl md:text-4xl font-bold">{metadata.volunteers.toLocaleString()}</p>
                         </div>
                     </div>
 
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 z-10">
                         <FaHandHoldingHeart className="text-3xl md:text-5xl text-gray-800" />
                         <div>
-                            <p className="text-base md:text-xl font-semibold text-gray-700">Total Donations</p>
+                            <p className="text-base md:text-xl font-semibold text-gray-100">Total Donations</p>
                             <p className="text-2xl md:text-4xl font-bold">₹{metadata.amount.toLocaleString()}</p>
                         </div>
                     </div>
