@@ -51,7 +51,7 @@ const Landing = () => {
           <Link to="/login" className="btn-primary !px-7 md:!px-16 text-base md:text-lg flex items-center justify-center">
             Login
           </Link>
-          <Link to="/signup" className="btn-secondary text-base md:text-lg flex items-center justify-center">
+          <Link to="/signup" className="btn-secondary !border-gray-100 !text-gray-100 text-base md:text-lg flex items-center justify-center">
             Become a Volunteer
           </Link>
         </div>

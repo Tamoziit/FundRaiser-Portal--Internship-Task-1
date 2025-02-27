@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner";
 import AppNavbar from "../../components/navbars/AppNav";
 import toast from "react-hot-toast";
 import formatDate from "../../utils/formatDate";
+import Contact from "../../components/Contact";
 
 const Transactions = () => {
 	const [selfDonations, setSelfDonations] = useState<Donation[] | null>([]);
@@ -45,8 +46,8 @@ const Transactions = () => {
 				) : (
 					<>
 						<div className="flex flex-col gap-2 items-center justify-center w-[98%]">
-							<h1 className="gradient-text-2 text-center text-3xl">Your Donations History</h1>
-							<div className="w-full lg:w-[80%] h-[1.5px] bg-gray-400" />
+							<h1 className="gradient-text-1 text-center text-3xl">Your Donations History</h1>
+							<div className="w-full lg:w-[80%] h-[1.5px] bg-gray-600" />
 
 							<div className="flex mt-4 gap-6 items-center justify-center w-full">
 								<button className="btn-primary !px-5 !py-3.5" onClick={() => setCurrState("External")}>External Donations</button>
@@ -57,47 +58,47 @@ const Transactions = () => {
 								{currState === "External" ? (
 									externalDonations && externalDonations.length > 0 ? (
 										externalDonations.map((donation, _idx) => (
-											<div key={_idx} className="flex flex-col md:flex-row gap-2 justify-between w-full glassmorphic-4 py-4 px-6">
-												<div className="w-full md:w-1/3">
-													<h2 className="mb-0.5 text-xl font-bold text-gray-300">Donor</h2>
+											<div key={_idx} className="flex flex-col md:flex-row gap-2 justify-between w-full glassmorphic py-4 px-6">
+												<div className="w-full md:w-1/3 z-10">
+													<h2 className="mb-0.5 text-xl font-bold text-gray-800">Donor</h2>
 													<div>
-														<span className="font-medium text-gray-400">Name:&nbsp;</span>
+														<span className="font-medium text-gray-600">Name:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_name}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Email:&nbsp;</span>
+														<span className="font-medium text-gray-600">Email:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_email}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Mobile No.:&nbsp;</span>
+														<span className="font-medium text-gray-600">Mobile No.:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_mobileNo}</span>
 													</div>
 												</div>
 
-												<div className="w-full md:w-1/3">
-													<h2 className="mb-0.5 text-xl font-bold text-gray-300">Volunteer</h2>
+												<div className="w-full md:w-1/3 z-10">
+													<h2 className="mb-0.5 text-xl font-bold text-gray-800">Volunteer</h2>
 													<div>
-														<span className="font-medium text-gray-400">Name:&nbsp;</span>
+														<span className="font-medium text-gray-600">Name:&nbsp;</span>
 														<span className="break-words font-medium">{donation.volunteer_name}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Email:&nbsp;</span>
+														<span className="font-medium text-gray-600">Email:&nbsp;</span>
 														<span className="break-words font-medium">{donation.volunteer_email}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Reference Code:&nbsp;</span>
+														<span className="font-medium text-gray-600">Reference Code:&nbsp;</span>
 														<span className="break-words font-medium">{donation.code}</span>
 													</div>
 												</div>
 
-												<div className="w-full md:hidden h-[1.5px] bg-gray-400" />
+												<div className="w-full md:hidden h-[1.5px] bg-gray-700 z-10" />
 
-												<div>
-													<h1 className="font-bold text-2xl mb-0.5 text-gray-300">Amount</h1>
+												<div className="z-10">
+													<h1 className="font-bold text-2xl mb-0.5 text-gray-800">Amount</h1>
 													<h1 className="font-bold text-3xl">₹{donation.amount}</h1>
 
 													<div>
-														<span className="text-gray-400">
+														<span className="text-gray-600">
 															Date:&nbsp;
 														</span>
 														<span>
@@ -119,45 +120,45 @@ const Transactions = () => {
 										selfDonations.map((donation, _idx) => (
 											<div key={_idx} className="flex flex-col md:flex-row gap-2 justify-between w-full glassmorphic-2 py-4 px-6">
 												<div className="w-full md:w-1/3">
-													<h2 className="mb-0.5 text-xl font-bold text-gray-300">Donor</h2>
+													<h2 className="mb-0.5 text-xl font-bold text-gray-800">Donor</h2>
 													<div>
-														<span className="font-medium text-gray-400">Name:&nbsp;</span>
+														<span className="font-medium text-gray-600">Name:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_name}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Email:&nbsp;</span>
+														<span className="font-medium text-gray-600">Email:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_email}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Mobile No.:&nbsp;</span>
+														<span className="font-medium text-gray-600">Mobile No.:&nbsp;</span>
 														<span className="break-words font-medium">{donation.donor_mobileNo}</span>
 													</div>
 												</div>
 
 												<div className="w-full md:w-1/3">
-													<h2 className="mb-0.5 text-xl font-bold text-gray-300">Volunteer</h2>
+													<h2 className="mb-0.5 text-xl font-bold text-gray-800">Volunteer</h2>
 													<div>
-														<span className="font-medium text-gray-400">Name:&nbsp;</span>
+														<span className="font-medium text-gray-600">Name:&nbsp;</span>
 														<span className="break-words font-medium">{donation.volunteer_name}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Email:&nbsp;</span>
+														<span className="font-medium text-gray-600">Email:&nbsp;</span>
 														<span className="break-words font-medium">{donation.volunteer_email}</span>
 													</div>
 													<div>
-														<span className="font-medium text-gray-400">Reference Code:&nbsp;</span>
+														<span className="font-medium text-gray-600">Reference Code:&nbsp;</span>
 														<span className="break-words font-medium">{donation.code}</span>
 													</div>
 												</div>
 
-												<div className="w-full md:hidden h-[1.5px] bg-gray-400" />
+												<div className="w-full md:hidden h-[1.5px] bg-gray-700" />
 
 												<div>
-													<h1 className="font-bold text-2xl mb-0.5 text-gray-300">Amount</h1>
+													<h1 className="font-bold text-2xl mb-0.5 text-gray-800">Amount</h1>
 													<h1 className="font-bold text-3xl">₹{donation.amount}</h1>
 
 													<div>
-														<span className="text-gray-400">
+														<span className="text-gray-600">
 															Date:&nbsp;
 														</span>
 														<span>
@@ -181,6 +182,8 @@ const Transactions = () => {
 				)
 				}
 			</div>
+
+			<Contact />
 		</div>
 	)
 }

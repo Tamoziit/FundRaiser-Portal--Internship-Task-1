@@ -28,7 +28,7 @@ const CTA = () => {
 				<span>Copy Donation Link to ClipBoard</span>
 				<FaClipboard />
 			</button>
-			<button className="btn-secondary !border-2 !border-gray-700 !text-gray-700 px-2 py-1.5 flex flex-col items-center gap-0.5" onClick={shareOnWhatsApp}>
+			<button className="btn-secondary px-2 !py-[9.5px] flex flex-col items-center gap-0.5" onClick={shareOnWhatsApp}>
 				<span>Share Donating Link over Whatsapp</span>
 				<FaWhatsapp />
 			</button>

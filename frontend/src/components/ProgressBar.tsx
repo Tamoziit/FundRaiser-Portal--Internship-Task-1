@@ -32,7 +32,7 @@ const ProgressBar = ({
                     strokeLinecap="round"
                 />
             </svg>
-            <span className="-mt-0.5 text-lg font-semibold text-gray-400">
+            <span className="-mt-0.5 text-lg font-semibold text-gray-300">
                 {percentage.toFixed(2)}% Raised
             </span>
         </div>

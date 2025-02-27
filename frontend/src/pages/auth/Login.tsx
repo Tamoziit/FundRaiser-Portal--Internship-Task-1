@@ -36,7 +36,7 @@ const Login = () => {
           </div>
 
           <form className="flex flex-col gap-7 items-start justify-center glassmorphic-2 backdrop-filter backdrop-blur-2xl !border-gray-700 rounded-lg lg:!rounded-none lg:!rounded-r-lg p-6 w-[320px] md:w-[380px] lg:w-[450px]" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-1 w-full">
+            <div className="flex flex-col gap-1 w-full z-10">
               <label className="text-lg font-medium text-gray-800">Email</label>
               <input
                 type="email"
@@ -48,7 +48,7 @@ const Login = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-1 w-full">
+            <div className="flex flex-col gap-1 w-full z-10">
               <label className="text-lg font-medium text-gray-800">Password</label>
               <div className="relative">
                 <input
@@ -69,7 +69,7 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-center p-2 w-full">
+            <div className="flex items-center justify-center p-2 w-full z-10">
               <button className="btn-submit w-full lg:w-[90%] disabled:bg-green-300" type="submit" disabled={loading}>
                 {loading ?
                   <Spinner size="small" color="primary" />
@@ -79,7 +79,7 @@ const Login = () => {
               </button>
             </div>
 
-            <div className="flex -mt-7 w-full items-center justify-center">
+            <div className="flex -mt-7 w-full items-center justify-center z-10">
               <Link to="/signup" className="text-gray-700 hover:text-blue-700 hover:font-semibold">Don't have an Account? Signup</Link>
             </div>
           </form>
