@@ -61,13 +61,13 @@ const Leaderboard = () => {
           </div>
         ) : (
           <>
-            <h1 className="gradient-text-2 text-4xl">Leaderboard</h1>
-            <div className="mt-4 mb-6 w-[95%] h-[1.5px] bg-gray-400" />
+            <h1 className="gradient-text-1 text-4xl">Leaderboard</h1>
+            <div className="mt-4 mb-6 w-[95%] h-[1.5px] bg-gray-600" />
 
             <div className="w-[86%] flex items-center justify-end mb-4">
               <div className="flex gap-2 items-center justify-center">
-                <button className="text-lg text-gray-200 cursor-pointer" onClick={prev}><GrPrevious /></button>
-                <button className="text-lg text-gray-200 cursor-pointer" onClick={next}><GrNext /></button>
+                <button className="text-lg text-gray-600 cursor-pointer" onClick={prev}><GrPrevious /></button>
+                <button className="text-lg text-gray-600 cursor-pointer" onClick={next}><GrNext /></button>
               </div>
             </div>
 
@@ -75,23 +75,23 @@ const Leaderboard = () => {
               <div className="w-[90%] flex items-center justify-center flex-col gap-4">
                 {leaderBoardData.users.length > 0 ? (
                   leaderBoardData?.users?.map((leader, _idx) => (
-                    <div key={_idx} className="flex items-center justify-between glassmorphic-3 py-4 px-4 md:px-8 w-full">
+                    <div key={_idx} className="flex items-center justify-between glassmorphic-4 py-4 px-4 md:px-8 w-full">
                       <div className="flex items-center gap-3">
-                        <img src={leader.profilePic || "/placeholderImg.png"} alt="ProfileImg" className="size-20 rounded-full border-2 border-gray-300" />
-                        <h1 className="text-xl font-semibold text-gray-200">{leader.name}</h1>
+                        <img src={leader.profilePic || "/placeholderImg.png"} alt="ProfileImg" className="size-20 rounded-full border-2 border-gray-200" />
+                        <h1 className="text-xl font-semibold text-gray-50">{leader.name}</h1>
                       </div>
 
                       <div className="flex flex-col items-end">
-                        <span className="text-lg font-semibold text-gray-200">{leader.level}</span>
-                        <span className="text-base text-gray-400 font-semibold">₹{leader.raisedAmount}</span>
+                        <span className="text-lg font-semibold text-gray-50">{leader.level}</span>
+                        <span className="text-base text-gray-300 font-semibold">₹{leader.raisedAmount}</span>
 
                         {hoveredIdx === _idx && (
-                          <div className="absolute bg-gray-600 text-white text-xs px-3 py-1 mt-8 rounded-md shadow-lg animate-fade-in">
+                          <div className="absolute bg-gray-800 text-white text-xs px-3 py-1 mt-8 rounded-md shadow-lg animate-fade-in">
                             Click to copy Reference Code
                           </div>
                         )}
 
-                        <span className="text-base text-gray-400 font-semibold cursor-pointer"
+                        <span className="text-base text-gray-300 font-semibold cursor-pointer"
                           onMouseEnter={() => setHoveredIdx(_idx)}
                           onMouseLeave={() => setHoveredIdx(null)}
                           onClick={() => copyToClipboard(leader.code)}
@@ -103,7 +103,7 @@ const Leaderboard = () => {
                   ))
                 ) : (
                   <div className="w-full flex items-center justify-center">
-                    <h1 className="text-lg italic text-gray-300">
+                    <h1 className="text-lg italic text-gray-600">
                       ...No more data Available...
                     </h1>
                   </div>

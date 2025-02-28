@@ -170,7 +170,7 @@ const Transactions = () => {
 										))
 									) : (
 										<div className="w-full flex items-center justify-center">
-											<h1 className="text-lg italic text-gray-300">
+											<h1 className="text-lg italic text-gray-600">
 												You have not made any donations yourself😔!!
 											</h1>
 										</div>

@@ -15,27 +15,27 @@ const AppNavbar = () => {
 	const items = [
 		{
 			name: "Home",
-			icon: <FaHome className="text-gray-700 font-bold" />,
+			icon: <FaHome className="text-gray-800 font-bold" />,
 			link: "/home",
 		},
 		{
 			name: "Dashboard",
-			icon: <IoStatsChartSharp className="text-gray-700 font-bold" />,
+			icon: <IoStatsChartSharp className="text-gray-800 font-bold" />,
 			link: "/dashboard",
 		},
 		{
 			name: "Transactions",
-			icon: <RiMoneyRupeeCircleFill className="text-gray-700 font-bold" />,
+			icon: <RiMoneyRupeeCircleFill className="text-gray-800 font-bold" />,
 			link: "/transactions",
 		},
 		{
 			name: "Leaderboard",
-			icon: <FaTrophy className="text-gray-700 font-bold" />,
+			icon: <FaTrophy className="text-gray-800 font-bold" />,
 			link: "/leaderboard",
 		},
 		{
 			name: "Mission",
-			icon: <VscWorkspaceTrusted className="text-gray-700 font-bold" />,
+			icon: <VscWorkspaceTrusted className="text-gray-800 font-bold" />,
 			link: "/mission",
 		}
 	];
@@ -49,7 +49,7 @@ const AppNavbar = () => {
 			</div>
 
 			<button
-				className="lg:hidden flex items-center text-gray-700 focus:outline-none"
+				className="lg:hidden flex items-center text-gray-800 focus:outline-none"
 				onClick={toggleMenu}
 			>
 				<svg
@@ -84,7 +84,7 @@ const AppNavbar = () => {
 						<Link
 							key={_idx}
 							to={item.link}
-							className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
+							className="relative text-lg font-medium text-gray-800 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-800 before:transition-all before:duration-300 hover:before:w-full"
 						>
 							{item.name}
 						</Link>
@@ -96,7 +96,7 @@ const AppNavbar = () => {
 					onClick={logout}
 					className="cursor-pointer"
 				>
-					<MdOutlineLogout className="size-5 text-gray-700" />
+					<MdOutlineLogout className="size-5 text-gray-800" />
 				</button>
 			</div>
 
@@ -108,7 +108,7 @@ const AppNavbar = () => {
 								<span>{item.icon}</span>
 								<Link
 									to={item.link}
-									className="relative text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full"
+									className="relative text-lg font-medium text-gray-800 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-800 before:transition-all before:duration-300 hover:before:w-full"
 									onClick={() => setIsMenuOpen(false)}
 								>
 									{item.name}
@@ -117,9 +117,9 @@ const AppNavbar = () => {
 						))}
 
 						<div className="flex items-center gap-2">
-							<MdOutlineLogout className="size-5 text-gray-700" />
+							<MdOutlineLogout className="size-5 text-gray-800" />
 							<button
-								className="relative gap-2 text-lg font-medium text-gray-700 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-700 before:transition-all before:duration-300 hover:before:w-full cursor-pointer"
+								className="relative gap-2 text-lg font-medium text-gray-800 before:absolute before:bottom-0 before:left-0 before:h-[2.3px] before:w-0 before:bg-gray-800 before:transition-all before:duration-300 hover:before:w-full cursor-pointer"
 								disabled={loading}
 								onClick={logout}
 							>

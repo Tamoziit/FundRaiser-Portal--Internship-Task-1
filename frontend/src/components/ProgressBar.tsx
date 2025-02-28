@@ -19,7 +19,7 @@ const ProgressBar = ({
                 <path
                     d="M10,50 A40,40 0 0,1 110,50"
                     fill="none"
-                    stroke="#374151"
+                    stroke="#e5e7eb"
                     strokeWidth={strokeWidth}
                     opacity="0.3"
                 />

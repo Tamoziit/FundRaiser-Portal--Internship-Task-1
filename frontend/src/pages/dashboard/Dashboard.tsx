@@ -50,7 +50,7 @@ const Dashboard = () => {
 							<div className="flex flex-col items-center justify-center mt-3 md:mt-0 md:items-end z-20">
 								<span className="text-2xl font-bold text-gray-50">{authUser?.name}</span>
 								<span className="font-medium text-gray-300">{authUser?.email}</span>
-								<span className="font-normal text-gray-400">{authUser?.mobileNo}</span>
+								<span className="font-normal text-gray-300">{authUser?.mobileNo}</span>
 							</div>
 						</div>
 
