@@ -30,3 +30,5 @@ export const levels = [
         target: Number.MAX_VALUE
     },
 ]
+
+export const girlEduTarget = 50000;

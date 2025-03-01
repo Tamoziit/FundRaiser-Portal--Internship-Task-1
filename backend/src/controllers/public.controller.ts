@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/user.model";
 import { client } from "../redis/client";
+import { girlEduTarget } from "../data/constants";
 
 export const getLeaderBoard = async (req: Request, res: Response) => {
     try {
@@ -37,6 +38,25 @@ export const getMetadata = async (req: Request, res: Response) => {
         }
     } catch (error) {
         console.error("Error in getMetadata controller:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const getGirlEduTarget = async (req: Request, res: Response) => {
+    try {
+        const user = await User.findById(req.user?._id);
+        if (!user) {
+            res.status(400).json({ error: "Cannot find user" });
+            return;
+        }
+
+        const target = girlEduTarget;
+        res.status(200).json({
+            target,
+            amount: user?.raisedAmount
+        });
+    } catch (error) {
+        console.error("Error in getGirlEduTarget controller:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 }

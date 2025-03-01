@@ -3,7 +3,7 @@ import AppNavbar from "../../components/navbars/AppNav";
 import Spinner from "../../components/Spinner";
 import { useAuthContext } from "../../context/AuthContext";
 import useGetDashboardData from "../../hooks/useGetDashboardData";
-import { DashboardData } from "../../types";
+import { DashboardData, EduTarget } from "../../types";
 import { FaAward } from "react-icons/fa";
 import { PiTargetBold } from "react-icons/pi";
 import { GiGrowth } from "react-icons/gi";
@@ -11,11 +11,15 @@ import ProgressBar from "../../components/ProgressBar";
 import CTA from "../../components/CTA";
 import { useNavigate } from "react-router-dom";
 import Contact from "../../components/Contact";
+import CircularProgress from "../../components/CircularProgress";
+import useGetTarget from "../../hooks/useGetTarget";
 
 const Dashboard = () => {
 	const { authUser } = useAuthContext();
 	const { loading, dashboard } = useGetDashboardData();
 	const [dashboardData, setDashboardData] = useState<DashboardData | null>();
+	const [eduTarget, setEduTarget] = useState<EduTarget | null>();
+	const { loading: enloading, getTarget } = useGetTarget();
 	const navigate = useNavigate();
 
 	const getDashboardData = async () => {
@@ -23,9 +27,24 @@ const Dashboard = () => {
 		setDashboardData(data);
 	}
 
+	const fetchEduTarget = async () => {
+		const data = await getTarget();
+		setEduTarget(data);
+	}
+
 	useEffect(() => {
 		getDashboardData();
+		fetchEduTarget();
 	}, []);
+
+	const goals = [
+		"Education for Underprivileged Children",
+		"Providing Nutritious Meals",
+		"Clothing for the Needy",
+		"Distributing Blankets",
+		"Promoting Menstrual Hygiene",
+		"Caring for Stray Animals"
+	]
 
 	return (
 		<div className="w-full flex flex-col items-center justify-center">
@@ -90,7 +109,7 @@ const Dashboard = () => {
 										<div className="w-full h-full flex flex-col items-center justify-center">
 											<h2 className="text-xl font-semibold text-gray-300">Next Level</h2>
 											<GiGrowth className="text-gray-200 text-6xl" />
-											<span className="text-3xl font-bold text-gray-50">{dashboardData!.nextLevel}</span>
+											<span className="text-3xl font-bold text-gray-50 text-center">{dashboardData!.nextLevel}</span>
 										</div>
 									</div>
 								</div>
@@ -111,6 +130,43 @@ const Dashboard = () => {
 					<button className="btn-submit !rounded-md !py-3 !px-19" onClick={() => navigate(`/donate/self/${authUser?.code}`)}>
 						Donate Yourself
 					</button>
+				</div>
+			</div>
+
+			<div className="flex flex-col md:flex-row w-full lg:w-[80%] items-center justify-center gap-6 md:gap-28 px-6 py-4">
+				<div className="flex flex-col items-center justify-center gap-2">
+					{enloading ? (
+						<Spinner size="medium" color="accent" />
+					) : (
+						<div>
+							{eduTarget ? (
+								<>
+									<CircularProgress
+										target={eduTarget.target}
+										amount={eduTarget.amount}
+										pic1="/girl.png"
+										pic2="/girlReading.png"
+									/>
+									<div className="text-center">
+										<h1 className="text-xl font-semibold text-gray-700">Educate One Girl</h1>
+										<span className="flex items-center w-full justify-center gap-2 text-3xl font-semibold text-gray-600">Goal: <h1 className="font-bold text-gray-800">₹{eduTarget.target}</h1></span>
+									</div>
+								</>
+							) : (
+								<span>Data Unavailable</span>
+							)}
+						</div>
+					)}
+				</div>
+
+				<div className="flex flex-col justify-center h-full relative">
+					<h1 className="text-3xl text-center md:text-left font-bold text-gray-800 mb-1.5">Our Goals</h1>
+
+					<ul className="list-disc pl-5 font-medium text-gray-600 text-lg">
+						{goals.map((goal, _idx) => (
+							<li key={_idx}>{goal}</li>
+						))}
+					</ul>
 				</div>
 			</div>
 

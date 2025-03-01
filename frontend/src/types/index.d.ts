@@ -83,3 +83,8 @@ export interface Donation {
     donationType: "External" | "Self";
     createdAt: string;
 }
+
+export interface EduTarget {
+    target: number;
+    amount: number;
+}

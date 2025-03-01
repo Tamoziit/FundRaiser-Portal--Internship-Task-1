@@ -49,7 +49,7 @@ const SelfDonationForm = () => {
 	return (
 		<div className="flex w-full h-screen items-center justify-center">
 			<div
-				className="absolute inset-0 bg-[url('/collage.png')] bg-center bg-contain bg-no-repeat opacity-75"
+				className="absolute inset-0 bg-[url('/collage.png')] bg-center bg-cover md:bg-contain bg-no-repeat opacity-75"
 			/>
 			{loading ? (
 				<div className="flex items-center justify-center w-full h-screen">
