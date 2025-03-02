@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Donation } from "../../types";
 import useProcessDonation from "../../hooks/useProcessDonation";
 import toast from "react-hot-toast";
@@ -12,6 +12,7 @@ const CompletePayment = () => {
   const [donationData, setDonationData] = useState<Donation | null>();
   const { loading, donation } = useProcessDonation();
   const { loading: enLoading, selfDonation } = useProcessSelfDonation();
+  const navigate = useNavigate();
 
   const sessionId = queryParams.get("session_id");
   const id = queryParams.get("id");
@@ -132,13 +133,23 @@ const CompletePayment = () => {
               </div>
             </div>
 
-            <button
-              className="mt-2 mb-1 btn-submit w-full lg:w-[80%] z-10"
-              disabled={loading || enLoading}
-              onClick={processDonation}
-            >
-              {loading || enLoading ? <Spinner size="small" color="secondary" /> : "Confirm Donation"}
-            </button>
+            <div className="w-full flex gap-3">
+              <button
+                className="mt-2 mb-1 btn-submit w-full lg:w-[80%] z-10"
+                disabled={loading || enLoading}
+                onClick={processDonation}
+              >
+                {loading || enLoading ? <Spinner size="small" color="secondary" /> : "Confirm"}
+              </button>
+
+              <button
+                className="mt-2 mb-1 !py-1.5 !px-10 !text-lg !font-semibold !rounded-xl btn-primary w-full lg:w-[80%] z-10"
+                disabled={loading || enLoading}
+                onClick={() => navigate(`/refund?session_id=${sessionId}&name=${name}&referenceCode=${referenceCode}&amount=${amount}`)}
+              >
+                {loading || enLoading ? <Spinner size="small" color="secondary" /> : "Cancel"}
+              </button>
+            </div>
           </>
         )}
       </div>

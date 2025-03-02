@@ -88,7 +88,32 @@ export const selfPaymentHandler = async (req: Request, res: Response) => {
 
         res.json({ url: session.url });
     } catch (err) {
-        console.error("Error in selfPaymentHandler", err);
+        console.log("Error in selfPaymentHandler", err);
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
+
+export const refundPaymentHandler = async (req: Request, res: Response) => {
+    try {
+        const { session_id } = req.body;
+        const session = await stripe.checkout.sessions.retrieve(session_id);
+
+        if (!session.payment_intent || typeof session.payment_intent !== "string") {
+            res.status(400).json({ error: "No valid payment intent found for this session." });
+            return;
+        }
+
+        const paymentIntentId: string = session.payment_intent;
+
+        // Creating the refund
+        const refund = await stripe.refunds.create({
+            payment_intent: paymentIntentId,
+            reason: "requested_by_customer"
+        });
+
+        res.status(200).json(refund);
+    } catch (error) {
+        console.log("Error in refundPaymentHandler", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}

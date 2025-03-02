@@ -88,3 +88,32 @@ export interface EduTarget {
     target: number;
     amount: number;
 }
+
+interface RefundProps {
+    id: string;
+    object: "refund";
+    amount: number;
+    balance_transaction: string;
+    charge: string;
+    created: number;
+    currency: string;
+    destination_details?: DestinationDetails | null;
+    metadata: Record<string, any>;
+    payment_intent: string;
+    reason: string;
+    receipt_number: string | null;
+    source_transfer_reversal: string | null;
+    status: "succeeded" | "pending" | "failed";
+    transfer_reversal: string | null;
+}
+
+interface DestinationDetails {
+    card: CardDetails;
+    type: "card";
+}
+
+interface CardDetails {
+    reference_status: "pending" | "succeeded" | "failed";
+    reference_type: "acquirer_reference_number" | string;
+    type: "refund";
+}

@@ -14,6 +14,7 @@ import CompletePayment from "./pages/payments/CompletePayment";
 import CancelPayement from "./pages/payments/CancelPayement";
 import MissionPage from "./pages/mission/MissionPage";
 import SelfDonationForm from "./pages/donate/SelfDonationForm";
+import Refund from "./pages/payments/Refund";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -33,8 +34,9 @@ function App() {
           <Route path="/transactions" element={authUser ? <Transactions /> : <Navigate to="/" />} />
           <Route path="/leaderboard" element={authUser ? <Leaderboard /> : <Navigate to="/" />} />
           <Route path="/mission" element={authUser ? <MissionPage /> : <Navigate to="/" />} />
-          <Route path="/donate/complete-payment" element={authUser ? <CompletePayment /> : <Navigate to="/" />} />
-          <Route path="/donate/cancel-payment" element={authUser ? <CancelPayement /> : <Navigate to="/" />} />
+          <Route path="/donate/complete-payment" element={<CompletePayment />} />
+          <Route path="/donate/cancel-payment" element={<CancelPayement />} />
+          <Route path="/refund" element={<Refund />} />
 
           <Route path="*" element={authUser ? <Navigate to="/home" /> : <Navigate to="/" />} />
         </Routes>
